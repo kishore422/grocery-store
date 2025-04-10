@@ -1,6 +1,5 @@
-
 #!/bin/bash
-# Install dependencies
+echo "Installing dependencies..."
 pip install -r requirements.txt
-# Collect static files
-python manage.py collectstatic --no-input
+echo "Collecting static files..."
+python manage.py collectstatic --noinput

@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView,LogoutView
 from bazaar import views
+from django.conf import settings
+
+from django.conf.urls.static import static
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -55,3 +59,7 @@ urlpatterns = [
     path('admin-add-product', views.admin_add_product_view,name='admin-add-product'),
     path('admin-view-product', views.admin_view_product_view,name='admin-view-product'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
